@@ -81,7 +81,7 @@ This fusion led to a substantial performance gain over both the CPU baseline and
 |----------------|-------------|----------------|--------------------|-------------------|-------|
 | CPU-Only | 10,000 | 13 min | — | — | Sequential baseline |
 | Shared-Memory Tiling | 10,000 | 145 ms | 71% | 76% | Parallel GPU version |
-| Fused Kernel | 10,000 | 80 ms | 86% | 86% | Fully optimized GPU version |
+| Fused Kernel | 10,000 | 80 ms | 86% | 86% |Parallel GPU version |
 
 ### Observations
 - The GPU optimizations resulted in a **speedup of over 9,000×** compared to the CPU version.  
