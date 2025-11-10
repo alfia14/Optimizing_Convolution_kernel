@@ -1,7 +1,7 @@
 # Optimizing Convolution Kernel Using CUDA
 
 ## Aim
-The main aim of this project is to accelerate the kernel implementing the convolution operation, a fundamental step in Convolutional Neural Network (CNN) training:contentReference[oaicite:0]{index=0}.  
+The main aim of this project is to accelerate the kernel implementing the convolution operation, a fundamental step in Convolutional Neural Network (CNN) training.  
 The optimization focuses on reducing computational time and improving memory efficiency through parallelization on NVIDIA GPUs.
 
 ---
@@ -14,7 +14,7 @@ The baseline implementation performs the convolution entirely on the **CPU** and
 
 The convolution kernel processes two 4D matrices:
 - **Input Image Tensor** – Represents the input data for the CNN layer.  
-- **Filter/Mask Tensor** – Slides over the image (receptive field) and performs convolution (sum of element-wise multiplications) to produce an output feature map:contentReference[oaicite:1]{index=1}.
+- **Filter/Mask Tensor** – Slides over the image (receptive field) and performs convolution (sum of element-wise multiplications) to produce an output feature map.
 
 ---
 
@@ -31,7 +31,7 @@ The loops iterate over:
 - **c** – Input channels  
 - **p, q** – Filter height and width positions  
 
-This CPU-only version took approximately **13 minutes** to train 10,000 images:contentReference[oaicite:2]{index=2}.
+This CPU-only version took approximately **13 minutes** to train 10,000 images.
 
 ---
 
@@ -46,7 +46,7 @@ The optimization involves three major steps:
    The reshaped filter matrix is multiplied with the unrolled input using a **tiled shared-memory GEMM kernel**, improving data locality and parallel computation.
 
 3. **Matrix Permutation:**  
-   The output from matrix multiplication is reshaped back into a 4D tensor layout representing the CNN’s output feature map:contentReference[oaicite:3]{index=3}.
+   The output from matrix multiplication is reshaped back into a 4D tensor layout representing the CNN’s output feature map.
 
 #### Optimization Features
 - Shared memory tiling for data reuse  
@@ -71,7 +71,7 @@ The fused implementation achieved:
 - **Compute Throughput:** 86%  
 - **Memory Throughput:** 86%  
 
-This fusion led to a substantial performance gain over both the CPU baseline and the shared-memory tiled version:contentReference[oaicite:4]{index=4}.
+This fusion led to a substantial performance gain over both the CPU baseline and the shared-memory tiled version.
 
 ---
 
@@ -81,7 +81,7 @@ This fusion led to a substantial performance gain over both the CPU baseline and
 |----------------|-------------|----------------|--------------------|-------------------|-------|
 | CPU-Only | 10,000 | 13 min | — | — | Sequential baseline |
 | Shared-Memory Tiling | 10,000 | 145 ms | 71% | 76% | Parallel GPU version |
-| Fused Kernel | 10,000 | 80 ms | 86% | 86% |Parallel GPU version |
+| Fused Kernel | 10,000 | 80 ms | 86% | 86% | Parallel GPU version |
 
 ### Observations
 - The GPU optimizations resulted in a **speedup of over 9,000×** compared to the CPU version.  
@@ -103,7 +103,7 @@ This fusion led to a substantial performance gain over both the CPU baseline and
 This project demonstrates the importance of **shared-memory optimization**, **kernel fusion**, and **bandwidth analysis** in accelerating CNN convolution operations.  
 By transitioning from CPU-based sequential execution to GPU-parallel execution, the convolution process was optimized to achieve real-time performance while maintaining computational accuracy.  
 
-The results confirm that **fused GPU kernels** are an effective approach for maximizing performance in convolution-heavy deep learning workloads:contentReference[oaicite:5]{index=5}.
+The results confirm that **fused GPU kernels** are an effective approach for maximizing performance in convolution-heavy deep learning workloads.
 
 ---
 
@@ -112,4 +112,4 @@ The results confirm that **fused GPU kernels** are an effective approach for max
 - NVIDIA Nsight Compute Profiler Documentation  
 - GPU Gems 3 – Chapter 31: *Fast Convolution on GPUs*  
 - NVIDIA Deep Learning Institute (DLI): *Fundamentals of Accelerated Computing with CUDA C/C++*  
-- Project Report: *Optimizing Convolution Kernel Using CUDA*:contentReference[oaicite:6]{index=6}
+- Project Report: *Optimizing Convolution Kernel Using CUDA*
